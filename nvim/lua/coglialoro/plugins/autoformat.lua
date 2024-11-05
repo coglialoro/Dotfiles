@@ -39,6 +39,7 @@ return { -- Autoformat
 				python = { "black" },
 				c = {  "clang-format"  },
 				cs = {  "omnisharp"  },
+        dart = {"dart_format"}
 			},
 		})
 

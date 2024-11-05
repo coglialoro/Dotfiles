@@ -8,3 +8,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  desc = "Flutter Hot Reload",
+  group = vim.api.nvim_create_augroup("flutter", { clear = true }),
+  pattern = "*.dart",
+  callback = function()
+    vim.cmd(":silent !kill -SIGUSR1 $(pgrep flutter)")
+  end,
+})

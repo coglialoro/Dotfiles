@@ -13,7 +13,7 @@ vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Clear search" })
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 
 -- Exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", {desc = "Exit terminal mode"})
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Don't yank with `x`
 vim.keymap.set("n", "x", '"_x', { desc = "Delete" })
@@ -25,7 +25,7 @@ vim.keymap.set("n", "dw", 'bve"_d', { desc = "Delete word backwards" })
 vim.keymap.set("n", "<C-a>", "gg<S-V>G", { desc = "Select all" })
 
 -- Window management
-vim.keymap.set("n", "<Leader>j", ":split<CR><C-w>w", { desc = "Horizonatal split" })
+vim.keymap.set("n", "<Leader>k", ":split<CR><C-w>w", { desc = "Horizonatal split" })
 vim.keymap.set("n", "<Leader>l", ":vsplit<CR><C-w>w", { desc = "Vertical split" })
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
@@ -50,17 +50,19 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Page up" })
 vim.keymap.set("n", "n", "nzz", { desc = "Go to next search result" })
 vim.keymap.set("n", "N", "Nzz", { desc = "Go to previous search result" })
 
-
 -- Move current selection up/down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
 -- Keep selection after indenting
-vim.keymap.set("x", "<", "<gv", { desc = "Keep selection after indenting left" })
-vim.keymap.set("x", ">", ">gv", { desc = "Keep selection after indenting right" })
+vim.keymap.set("x", "<", "<gv", { desc = "Indent left" })
+vim.keymap.set("x", ">", ">gv", { desc = "Indent right" })
+-- Indent with Tab
+vim.keymap.set("x", "<S-Tab>", "<gv", { desc = "Indent left" })
+vim.keymap.set("x", "<Tab>", ">gv", { desc = "Indent right" })
 
 -- Diagnostics
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
