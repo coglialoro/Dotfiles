@@ -111,6 +111,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="TERM=xterm-256color tmux"
 alias godot-nvim="nvim --listen ./godothost ."
+#unity
+alias unity-nvim="nvim --listen /tmp/unity"
+
 
 export PATH=$PATH:$HOME/.local/bin
 #export PATH=$PATH:/opt/android-studio/bin
@@ -119,8 +122,7 @@ export PATH=$PATH:/home/coglialoro/Android/Sdk/platform-tools
 export PATH=$PATH:/home/coglialoro/Android/Sdk/emulator
 export PATH=$PATH:/home/coglialoro/sdks/flutter/bin
 
-#export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-23-openjdk
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -136,3 +138,4 @@ export NVM_DIR="$HOME/.nvm"
  
 # Use Neovim as man pager
 export MANPAGER="nvim +Man!"
+
