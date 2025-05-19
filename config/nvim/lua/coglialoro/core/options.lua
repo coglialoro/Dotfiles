@@ -20,7 +20,7 @@ local options = {
 	autoindent = true,
 	breakindent = true,
 	-- Completion
-	completeopt = { "menuone", "preview" }, --"noselect", "noinsert"
+	completeopt = { "menuone", "preview", "noselect", "noinsert" }, --"noselect", "noinsert"
 	pumheight = 10,
 	-- Search
 	hlsearch = true,

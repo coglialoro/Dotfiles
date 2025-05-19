@@ -8,7 +8,6 @@ return {
   },
   config = function()
     require("mason").setup()
-    require("mason-lspconfig").setup()
     require("lsp-format").setup()
 
     local get_opts = function(desc)
@@ -57,76 +56,44 @@ return {
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    require("mason-lspconfig").setup_handlers({
-      function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-        })
-      end,
-      ["lua_ls"] = function()
-        local lspconfig = require("lspconfig")
-        lspconfig.lua_ls.setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { "vim" },
-              },
-            },
-          },
-        })
-      end,
-      ["ts_ls"] = function()
-        local lspconfig = require("lspconfig")
-        lspconfig.ts_ls.setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-          filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-        })
-      end,
-      ["emmet_ls"] = function()
-        local lspconfig = require("lspconfig")
-        lspconfig.emmet_ls.setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-          filetypes = { "html", "javascriptreact", "typescriptreact" },
-        })
-      end,
-      ["cssls"] = function()
-        local lspconfig = require("lspconfig")
-        lspconfig.cssls.setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-          settings = {
-            css = { validate = true, lint = { unknownAtRules = "ignore" } },
-            scss = { validate = true, lint = { unknownAtRules = "ignore" } },
-            less = { validate = true, lint = { unknownAtRules = "ignore" } },
-          },
-        })
-      end,
-      ["omnisharp"] = function()
-        local lspconfig = require("lspconfig")
-        lspconfig.omnisharp.setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-          handlers = {
-            ["textDocument/definition"] = require("omnisharp_extended").definition_handler,
-            ["textDocument/typeDefinition"] = require("omnisharp_extended").type_definition_handler,
-            ["textDocument/references"] = require("omnisharp_extended").references_handler,
-            ["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
-          },
-        })
-      end,
+    require("mason-lspconfig").setup({
+      ensure_installed = { "lua_ls" }
     })
 
-    local lspconfig = require("lspconfig")
-    lspconfig.dartls.setup({
+    vim.lsp.config("dartls", {
       cmd = { "dart", "language-server", "--protocol=lsp" },
       filetypes = { "dart" },
       on_attach = on_attach,
       capabilities = capabilities,
+    })
+
+
+    vim.lsp.config("lua_ls", {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+        },
+      },
+    })
+
+    vim.lsp.config("ts_ls", {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    })
+
+    vim.lsp.config("css_ls", {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = {
+        css = { validate = true, lint = { unknownAtRules = "ignore" } },
+        scss = { validate = true, lint = { unknownAtRules = "ignore" } },
+        less = { validate = true, lint = { unknownAtRules = "ignore" } },
+      },
     })
   end,
 }

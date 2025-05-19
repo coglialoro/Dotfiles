@@ -13,6 +13,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -110,20 +111,27 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="TERM=xterm-256color tmux"
-alias godot-nvim="nvim --listen ./godothost ."
+#alias godot-nvim="nvim --listen ./godothost ."
+alias godot-nvim="nvim --listen /tmp/godot"
 #unity
-alias unity-nvim="nvim --listen /tmp/unity"
+#alias unity-nvim="nvim --listen /tmp/unity"
+alias yay-clean="yay -Qtdq | yay -Rns -"
 
 
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/bin
 #export PATH=$PATH:/opt/android-studio/bin
-export PATH=$PATH:/home/coglialoro/Android/Sdk/cmdline-tools/latest/bin
-export PATH=$PATH:/home/coglialoro/Android/Sdk/platform-tools
-export PATH=$PATH:/home/coglialoro/Android/Sdk/emulator
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH=$PATH:/home/coglialoro/sdks/flutter/bin
 
-export JAVA_HOME=/usr/lib/jvm/java-23-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
+#
+#export ANDROID_HOME=/opt/android-sdk
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -139,3 +147,4 @@ export NVM_DIR="$HOME/.nvm"
 # Use Neovim as man pager
 export MANPAGER="nvim +Man!"
 
+export HYPRSHOT_DIR="~/$XDG_PICTURES_DIR/Screenshots"
